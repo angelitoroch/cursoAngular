@@ -1,18 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+//Importamos el componente
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { videoJuegoComponent } from "./videoJuego/videoJuego.componente";
+import { zapatillasComponent } from "./zapatillas/zapatillas.component";
+import { CursosComponent } from "./cursos/cursos.component";
 
+//Es el decorador que permite configurar el modulo
 @NgModule({
+  //cargar componentes, pipes y directivas
   declarations: [
-    AppComponent
+    AppComponent,
+    videoJuegoComponent,
+    zapatillasComponent,
+    CursosComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  //Cargar modulos de externos/propios o creados por nosotros mismos
+  imports: [BrowserModule, AppRoutingModule],
+  //Cargar servicios
   providers: [],
+  //Modulo que se va a cargar por default, el que inicia la aplicacion
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
