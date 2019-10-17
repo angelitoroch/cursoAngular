@@ -1,1 +1,51 @@
-<h2>{{titulo}}</h2>
+<h2>{{ titulo }}</h2>
+<p>Compra las zapatillas de las mejores marcas</p>
+
+<ul>
+  <!--Acceder al indice de un array, en este caso al array marcas-->
+  <li *ngFor="let marca of marcas; let indice = index">
+    {{ indice + " " + marca }}
+  </li>
+</ul>
+
+<p>Las deportivas que tenemos disponibles son:</p>
+<ul>
+  <!--ngFor directiva para recorrer un array de objetos o de cualquier tipo y mostrar sus valores-->
+  <!--creame una variable por cada iteracion que haga en zapatillas-->
+  <!--y muestrame lo que tiene la variable en el atributo nombre mas el precio de este producto-->
+  <li *ngFor="let deportiva of zapatillas">
+    <!--Mostrara los datos solamente si hay en stock-->
+    <!-- <div *ngIf="deportiva.stock"> -->
+    <span
+      [ngStyle]="{
+        'text-decoration': !deportiva.stock ? 'line-through' : 'none'
+      }"
+    >
+      {{ deportiva.nombre }} - <strong> $ {{ deportiva.precio }}</strong>
+    </span>
+    <!--La directiva *ngIF es para saber si cumple esta condicion-->
+    <!--La etiqueta de atributo Style se utiliza entre corchetes-->
+    <span
+      *ngIf="deportiva.precio <= 80"
+      [style.background]="deportiva.precio < 80 ? 'green' : 'transparent'"
+      [style.color]="deportiva.precio <= 80 ? 'red' : 'black'"
+      >¡En oferta!</span
+    >
+  </li>
+</ul>
+
+<p>El color de la mayoria de nuestras zapatillases:</p>
+
+<!--Se enseñara a usar la directiva ngSwitch-->
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'yellow'">
+    El color predominante es el
+    <span [ngStyle]="{ background: color }">amarillo</span>
+  </li>
+  <li *ngSwitchCase="'red'">
+    El color predominante es el <span style="background: red;">rojo</span>
+  </li>
+  <li *ngSwitchCase="'blue'">
+    El color predominante es el <span style="background: blue;">blue</span>
+  </li>
+</ul>
