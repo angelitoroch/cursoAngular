@@ -1,10 +1,22 @@
 <h2>{{ titulo }}</h2>
-<p>Compra las zapatillas de las mejores marcas</p>
 
+<p>Añadir marca</p>
+
+<!--La directiva ngModel nos permite modificar una propiedad que tengamos en la clase y hacer una actualizacion en tiempo real-->
+<p>
+  <input type="text" [(ngModel)]="miMarca" placeholder="inserte marca" />
+  <button (click)="getMarca()">Mostrar marca</button>
+  <button (click)="addMarca()">Agregar marca</button> 
+</p>
+<p> {{ miMarca }}</p>
+
+
+<p>Compra las zapatillas de las mejores marcas</p>
 <ul>
   <!--Acceder al indice de un array, en este caso al array marcas-->
   <li *ngFor="let marca of marcas; let indice = index">
     {{ indice + " " + marca }}
+    <!--Biding interpolacion que es mostrar un dato guardado en la clase-->
   </li>
 </ul>
 
@@ -16,21 +28,15 @@
   <li *ngFor="let deportiva of zapatillas">
     <!--Mostrara los datos solamente si hay en stock-->
     <!-- <div *ngIf="deportiva.stock"> -->
-    <span
-      [ngStyle]="{
+    <span [ngStyle]="{
         'text-decoration': !deportiva.stock ? 'line-through' : 'none'
-      }"
-    >
+      }">
       {{ deportiva.nombre }} - <strong> $ {{ deportiva.precio }}</strong>
     </span>
     <!--La directiva *ngIF es para saber si cumple esta condicion-->
     <!--La etiqueta de atributo Style se utiliza entre corchetes-->
-    <span
-      *ngIf="deportiva.precio <= 80"
-      [style.background]="deportiva.precio < 80 ? 'green' : 'transparent'"
-      [style.color]="deportiva.precio <= 80 ? 'red' : 'black'"
-      >¡En oferta!</span
-    >
+    <span *ngIf="deportiva.precio <= 80" [style.background]="deportiva.precio < 80 ? 'green' : 'transparent'"
+      [style.color]="deportiva.precio <= 80 ? 'red' : 'black'">¡En oferta!</span>
   </li>
 </ul>
 

@@ -1,5 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+//Importamos el modulo de formularios 
+import { FormsModule } from '@angular/forms';
 
 //Importamos el componente
 import { AppRoutingModule } from "./app-routing.module";
@@ -18,7 +20,7 @@ import { CursosComponent } from "./cursos/cursos.component";
     CursosComponent
   ],
   //Cargar modulos de externos/propios o creados por nosotros mismos
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   //Cargar servicios
   providers: [],
   //Modulo que se va a cargar por default, el que inicia la aplicacion

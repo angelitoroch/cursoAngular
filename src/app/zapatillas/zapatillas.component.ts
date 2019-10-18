@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { zapatilla } from "../models/zapatilla";
+import { Component, OnInit } from '@angular/core';
+import { zapatilla } from '../models/zapatilla';
 
 @Component({
-  selector: "zapatillas",
-  templateUrl: "./zapatillas.component.html"
+  selector: 'zapatillas',
+  templateUrl: './zapatillas.component.html'
 })
 export class zapatillasComponent implements OnInit {
   public titulo: string = "Componente de zapatillas";
@@ -12,15 +12,16 @@ export class zapatillasComponent implements OnInit {
   //Se declara un arreglo de la clase String
   public marcas: String[];
   public color: String;
+  public miMarca: String;
 
   constructor() {
     //Se inicializa el arreglo que tendra las marcas de las zapatillas
     this.marcas = new Array();
-    this.color = "yellow";
+    this.color = 'yellow';
     this.zapatillas = [
-      new zapatilla("Reebok Classic", 80, "Reebok", "Blanco", true),
-      new zapatilla("Nike Total 90", 50, "Nike", "Cafe", true),
-      new zapatilla("Vans Classic", 100, "Vans", "Rojos", false)
+      new zapatilla('Reebok Classic', 80, 'Reebok', 'Blanco', true),
+      new zapatilla('Nike Total 90', 50, 'Nike', 'Cafe', true),
+      new zapatilla('Vans Classic', 100, 'Vans', 'Rojos', false)
     ];
   }
 
@@ -39,5 +40,15 @@ export class zapatillasComponent implements OnInit {
       }
     });
     console.log(this.marcas);
+  }
+
+  addMarca()
+  {
+    this.marcas.push(this.miMarca)
+  }
+
+  getMarca()
+  {
+    alert(this.miMarca);
   }
 }
