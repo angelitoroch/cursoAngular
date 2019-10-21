@@ -1,20 +1,42 @@
 <div>
   <!-- Highlight Card -->
-  <div [ngStyle]="{'background' : config,
-                    'padding' : '20px',
-                    'border' : '5px solid black'
-                  }">
+  <div
+    [ngStyle]="{
+      background: config,
+      padding: '20px',
+      border: '5px solid black'
+    }"
+  >
     <h1>Bienvenido {{ title }}</h1>
+
+    <!--Manera de acceder a diferentes componentes sin necesidad de recargar-->
+    <!--La directiva que se usara para este proceso es "routerLink"-->
+    <nav>
+      <a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a>
+      &nbsp;
+      <a [routerLink]="['/zapatillas']" [routerLinkActive]="['activado']">Zapatillas</a>
+      &nbsp;
+      <a [routerLink]="['/cursos']" [routerLinkActive]="['activado']">Cursos</a>
+      &nbsp;
+      <a [routerLink]="['/videojuego']" [routerLinkActive]="['activado']">Videojuego</a>
+    </nav>
+    <hr>
+
+    <!--
     <p>{{descripcion}}</p>
     <br>
-    <!--Al dar clic en el boton se ejecutara el metodo ocultarVideojuegos mandando como parametro  true y solamente sera visible si mostrarVideoJuegos es diferente a true-->
-    <button (click)='ocultarVideojuegos(true)' *ngIf="!mostrarVideojuegos">{{opcion}}</button>
-    <!--Al dar clic en el boton se ejecutara el metodo ocultarVideojuegos mandando como parametro  false y solamente sera visible si mostrarVideoJuegos es true-->
-    <button (click)='ocultarVideojuegos(false)' *ngIf="mostrarVideojuegos">{{opcion}}</button>
+    <!--Al dar clic en el boton se ejecutara el metodo ocultarVideojuegos mandando como parametro  true y solamente sera visible si mostrarVideoJuegos es diferente a true
+    <button (click)="ocultarVideojuegos(true)" *ngIf="!mostrarVideojuegos">
+      {{ opcion }}
+    </button>
+    <!--Al dar clic en el boton se ejecutara el metodo ocultarVideojuegos mandando como parametro  false y solamente sera visible si mostrarVideoJuegos es true
+    <button (click)="ocultarVideojuegos(false)" *ngIf="mostrarVideojuegos">
+      {{ opcion }}
+    </button>
     <videojuego *ngIf="mostrarVideojuegos"></videojuego>
     <zapatillas></zapatillas>
     <cursos></cursos>
+    -->
+    <router-outlet></router-outlet>
   </div>
 </div>
-
-<router-outlet></router-outlet>

@@ -1,0 +1,17 @@
+/*Estilos para la clase altoPrecio*/
+.altoPrecio{
+    color:gray;
+    font-size: 18px;
+}
+
+.fondoRojo{
+    background: red;
+}
+
+.activado{
+    border: 3px solid yellow;
+}
+
+.subrayado{
+    text-decoration: underline;
+}

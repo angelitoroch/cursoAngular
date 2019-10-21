@@ -1,21 +1,36 @@
 <h2>{{ titulo }}</h2>
 
+<p>Funcion keyup al dar enter</p>
+<!---->
+<input
+  placeholder="inserte algo"
+  [(ngModel)]="palabra"
+  (keyup.enter)="onKeyUp()"
+/>
+
 <p>Añadir marca</p>
 
 <!--La directiva ngModel nos permite modificar una propiedad que tengamos en la clase y hacer una actualizacion en tiempo real-->
+<!--El evento blur es para que se ejecute una accion cuando se sale del input-->
 <p>
-  <input type="text" [(ngModel)]="miMarca" placeholder="inserte marca" />
+  <input
+    type="text"
+    [(ngModel)]="miMarca"
+    placeholder="inserte marca"
+    (blur)="onBlur()"
+  />
   <button (click)="getMarca()">Mostrar marca</button>
-  <button (click)="addMarca()">Agregar marca</button> 
+  <button (click)="addMarca()">Agregar marca</button>
 </p>
-<p> {{ miMarca }}</p>
-
+<p>{{ miMarca }}</p>
 
 <p>Compra las zapatillas de las mejores marcas</p>
 <ul>
   <!--Acceder al indice de un array, en este caso al array marcas-->
   <li *ngFor="let marca of marcas; let indice = index">
     {{ indice + " " + marca }}
+    <!--Boton que se encarga de eliminar un elemento del array de marcas-->
+    <button (click)="borrarMarca(indice)">Borrar</button>
     <!--Biding interpolacion que es mostrar un dato guardado en la clase-->
   </li>
 </ul>
@@ -28,19 +43,37 @@
   <li *ngFor="let deportiva of zapatillas">
     <!--Mostrara los datos solamente si hay en stock-->
     <!-- <div *ngIf="deportiva.stock"> -->
-    <span [ngStyle]="{
+    <span
+      [ngStyle]="{
         'text-decoration': !deportiva.stock ? 'line-through' : 'none'
-      }">
-      {{ deportiva.nombre }} - <strong> $ {{ deportiva.precio }}</strong>
+      }"
+    >
+      <!--nGclass en atributos el cual le da una clase en css a los precios que sean igual o mayores a 80 la clase se llama altoPrecio-->
+      <!--nGclass para poder hacer condiciones y poner varias clases de golpe si se cumple una condicion-->
+      {{ deportiva.nombre }} -
+      <strong
+        [class.altoPrecio]="deportiva.precio >= 80"
+        [ngClass]="{
+          fondoRojo: deportiva.precio < 80,
+          subrayado: deportiva.marca == 'Nike'
+        }"
+      >
+        $ {{ deportiva.precio }}</strong
+      >
     </span>
     <!--La directiva *ngIF es para saber si cumple esta condicion-->
     <!--La etiqueta de atributo Style se utiliza entre corchetes-->
-    <span *ngIf="deportiva.precio <= 80" [style.background]="deportiva.precio < 80 ? 'green' : 'transparent'"
-      [style.color]="deportiva.precio <= 80 ? 'red' : 'black'">¡En oferta!</span>
+    <span
+      *ngIf="deportiva.precio <= 80"
+      [style.background]="deportiva.precio < 80 ? 'green' : 'transparent'"
+      [style.color]="deportiva.precio <= 80 ? 'red' : 'black'"
+      >¡En oferta!</span
+    >
   </li>
 </ul>
 
 <p>El color de la mayoria de nuestras zapatillases:</p>
+<input type="text" [(ngModel)]="color" />
 
 <!--Se enseñara a usar la directiva ngSwitch-->
 <ul [ngSwitch]="color">
