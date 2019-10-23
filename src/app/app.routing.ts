@@ -9,6 +9,8 @@ import { HomeComponent } from "./home/home.component";
 import { zapatillasComponent } from "./zapatillas/zapatillas.component";
 import { videoJuegoComponent } from "./videoJuego/videoJuego.componente";
 import { CursosComponent } from "./cursos/cursos.component";
+import { ExternoComponent } from "./externo/externo.component";
+import { ContactoComponent} from "./contacto/contacto.component";
 
 //Array de rutas
 //Constante llamapana appRouters de la clase Routes
@@ -20,6 +22,8 @@ const appRouters: Routes = [
   { path: "videojuego", component: videoJuegoComponent },
   { path: "cursos", component: CursosComponent },
   { path: "cursos/:nombre/:followers", component: CursosComponent },
+  { path: "externo", component: ExternoComponent},
+  { path: "contacto", component: ContactoComponent},
   //Definir siempre si no da error, esto significa que si se ingresa una ruta desconocida nos mande al hombe
   { path: "**", component: HomeComponent }
 ];

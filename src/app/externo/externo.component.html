@@ -1,0 +1,62 @@
+<!--Para usar un pipe se usa la siguiente sintaxis "tuberia nombre del pipe y el parametro el cual son opciones del pipe"-->
+<h2>Pipe propios de angular</h2>
+{{ fecha | date: "fullDate" | uppercase }} <br />
+{{ fecha | date: "dd/MM/yy" }} <br />
+{{ "HOLA MUNDO" | lowercase }} <br />
+
+<h2>Pipes propios</h2>
+{{ 4 | calculadora: 2 }}
+
+<br />
+<input type="text" [(ngModel)]="userId" (keyup.enter)="cargarUsuario()" />
+
+<!--Se mostrara solamente si la variable user tiene algo-->
+<div *ngIf="user">
+  <h1>Datos obtenidos por peticion Ajax:</h1>
+  <img src="{{ user.avatar }}" width="200px" />
+  <h2>{{ user.first_name + " " + user.last_name }}</h2>
+</div>
+
+<hr />
+<h2>Crear usuario</h2>
+
+<form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+  <p>
+    <label for="name">Nombre</label>
+    <input
+      type="text"
+      name="name"
+      #name="ngModel"
+      [(ngModel)]="new_user.name"
+      required
+      pattern="[a-zA-Z ]+"
+    />
+    <span *ngIf="name.touched && !name.valid">Error</span>
+  </p>
+
+  <p>
+    <label for="job">Trabajo</label>
+    <input
+      type="text"
+      name="job"
+      #job="ngModel"
+      [(ngModel)]="new_user.job"
+      required
+      pattern="[a-zA-Z ]+"
+    />
+    <span *ngIf="job.touched && !job.valid">Error</span>
+  </p>
+
+  <input
+    type="submit"
+    value="Guardar usuario"
+    [disabled]="!newUser.form.valid"
+  />
+</form>
+
+<div *ngIf="usuario_guardado"> 
+  <h2>Nombre: {{usuario_guardado.name}}</h2>
+  <h2>Trabajo: {{usuario_guardado.job}}</h2>
+  <h2>Id: {{usuario_guardado.id}}</h2>
+  <h2>Creado {{usuario_guardado.createdAt}}</h2>
+</div>

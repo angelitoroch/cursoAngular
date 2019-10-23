@@ -15,14 +15,14 @@ import { Configuracion } from "./models/configuracion";
 
 //Hacemos un export para poder utilizar esta clase en otros archivos
 export class AppComponent {
-  public title= "Master de JavaScript y Angular";
+  public title = "Master de JavaScript y Angular";
   public mostrarVideojuegos: boolean;
   public opcion: String;
-  public descripcion:String;
+  public descripcion: String;
   public config;
 
   constructor() {
-    //Se asignan los valores del objeto de Configuracion 
+    //Se asignan los valores del objeto de Configuracion
     this.title = Configuracion.titulo;
     this.descripcion = Configuracion.descripcion;
     this.config = Configuracion.fondo;
